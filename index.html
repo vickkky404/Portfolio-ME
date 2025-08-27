@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nalinikant | Portfolio</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS for animations and theme -->
+    <style>
+        /* Setting the font for the entire page */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* A very dark gray, almost black */
+            color: #e2e8f0; /* A light gray for text */
+        }
+
+        /* Custom gradient for the hero section background */
+        .hero-gradient {
+            background: radial-gradient(ellipse at top, #1e3a8a, #0a0a0a 70%);
+        }
+        
+        /* Custom gradient for text */
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animation for elements fading in on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        /* State when the element is visible */
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Styling for the animated canvas background */
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Ensure content is above the canvas */
+        .content-layer {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header and Navigation -->
+    <header class="bg-black bg-opacity-50 backdrop-blur-lg fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-white">
+                    <a href="#">Nalinikant</a>
+                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8 text-lg">
+                    <a href="#about" class="text-slate-300 hover:text-sky-400 transition duration-300">About</a>
+                    <a href="#skills" class="text-slate-300 hover:text-sky-400 transition duration-300">Skills</a>
+                    <a href="#projects" class="text-slate-300 hover:text-sky-400 transition duration-300">Projects</a>
+                    <a href="#contact" class="text-slate-300 hover:text-sky-400 transition duration-300">Contact</a>
+                </nav>
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <nav class="flex flex-col items-center space-y-4 py-4">
+                <a href="#about" class="text-slate-300 hover:text-sky-400 transition duration-300 mobile-link">About</a>
+                <a href="#skills" class="text-slate-300 hover:text-sky-400 transition duration-300 mobile-link">Skills</a>
+                <a href="#projects" class="text-slate-300 hover:text-sky-400 transition duration-300 mobile-link">Projects</a>
+                <a href="#contact" class="text-slate-300 hover:text-sky-400 transition duration-300 mobile-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center p-6 relative overflow-hidden hero-gradient">
+            <canvas id="particle-canvas"></canvas>
+            <div class="content-layer">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white reveal">Hello, I'm <span class="text-gradient">Nalinikant Bastia</span></h1>
+                <p class="mt-4 text-xl md:text-2xl text-slate-300 reveal" style="transition-delay: 200ms;">A Passionate BCA Student & Aspiring Web Developer.</p>
+                <a href="#projects" class="mt-8 inline-block bg-sky-500 text-white font-bold text-lg px-8 py-3 rounded-full hover:bg-sky-600 transform hover:scale-105 transition duration-300 reveal" style="transition-delay: 400ms;">
+                    View My Work
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-white reveal">About Me</h2>
+                    <div class="w-24 h-1 bg-sky-500 mx-auto mb-8 reveal"></div>
+                    <p class="text-lg text-slate-400 leading-relaxed reveal">
+                        I am a dedicated and enthusiastic Bachelor of Computer Applications (BCA) student with a strong foundation in programming, web development, and database management. I love solving complex problems and turning ideas into reality through code. I'm currently focused on expanding my skills in modern web technologies and am eager to contribute to innovative projects.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-white reveal">My Skills</h2>
+                    <div class="w-24 h-1 bg-sky-500 mx-auto mb-12 reveal"></div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
+                    <!-- Skill Item  -->
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=13679&format=png&color=000000" alt="Java" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">JAVA</span>
+                    </div>
+                     <!-- Skill Item Example -->
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=90519&format=png&color=000000" alt="Spring Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">Spring Boot</span>
+                    </div>
+                     <!-- Skill Item Example -->
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=j9DnICNnlhGk&format=png&color=000000" alt="angular Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">Angular</span>
+                    </div>
+                     <!-- Skill Item Example -->
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=BASPRdx1MrMq&format=png&color=000000" alt="bootstrap Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">Bootstrap</span>
+                    </div>
+                     <!-- Skill Item Example -->
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=iEBcQcM9rnZ9&format=png&color=000000" alt="github Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">GitHub</span>
+                    </div>
+
+                    <!-- Skill Item Example -->
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=F7REdHlg6KJX&format=png&color=000000" alt="intellij Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">Intellij Idea</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=YX03OUiHE3rz&format=png&color=000000" alt="python Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">Python</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=LwQEs9KnDgIo&format=png&color=000000" alt="PostgresSQL Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">PostgresSQL</span>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 bg-slate-800 rounded-lg shadow-lg reveal">
+                        <img src="https://img.icons8.com/?size=100&id=ew5sPNbvz6Dw&format=png&color=000000" alt="PHP Icon" class="w-16 h-16 mb-2 rounded-full">
+                        <span class="text-lg font-semibold text-white">PHP</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-white reveal">My Projects</h2>
+                    <div class="w-24 h-1 bg-sky-500 mx-auto mb-12 reveal"></div>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Project Card 1 -->
+                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <img src="resources\Screenshot 2025-06-08 232706.png" alt="Project 1" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Sales Data Analysis</h3>
+                            <p class="text-slate-400 mb-4">A full-featured Data analysis project built with Python, matplotlib,pandas and seaborn to analyze and represent the sales data of a company and represent the analyed data in diffrent charts.</p>
+                            <a href="https://github.com/vickkky404/Python-Data-Analytics-Project" class="text-sky-400 font-semibold hover:underline">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <img src="resources\image.png" alt="Project 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">JSP-WeatherAPP</h3>
+                            <p class="text-slate-400 mb-4">A simple and intuitive weather app created using JSP,Servlet and integrated API of open weather.</p>
+                            <a href="https://github.com/vickkky404/JSP-WeatherAPP/tree/main" class="text-sky-400 font-semibold hover:underline">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <img src="resources\1rmX3pNWwLPW3VGaC4N5xQA.png" alt="Project 3" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">WebSocket-Springboot</h3>
+                            <p class="text-slate-400 mb-4">Implemented WebSocket concept that learned how the notification System works in springboot that can be used in a project</p>
+                            <a href="#" class="text-sky-400 font-semibold hover:underline">View Details &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="bg-slate-800 rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <img src="resources\Screenshot 2025-06-18 232422.png" alt="Project 2" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Task Management App</h3>
+                            <p class="text-slate-400 mb-4">A simple and intuitive task manager to help users organize their daily tasks, built with vanilla JavaScript.</p>
+                            <a href="#" class="text-sky-400 font-semibold hover:underline">View Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold mb-4 text-white reveal">Get In Touch</h2>
+                    <div class="w-24 h-1 bg-sky-500 mx-auto mb-8 reveal"></div>
+                    <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10 reveal">
+                        I'm currently looking for opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    </p>
+                    <a href="mailto:nalinikantbastia@gmail.com" class="inline-block bg-sky-500 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-sky-600 transform hover:scale-105 transition duration-300 reveal">
+                        Say Hello
+                    </a>
+                    <a href="resources\CV.pdf" download="CV.pdf" class="inline-block bg-transparent border-2 border-sky-500 text-sky-500 font-bold text-lg px-8 py-4 rounded-full hover:bg-sky-500 hover:text-white transform hover:scale-105 transition duration-300">
+                            Download CV
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8">
+        <div class="container mx-auto px-6 text-center text-slate-400">
+            <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+            <p class="mt-2">Designed with ❤️ and lots of coffee.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // JavaScript for the particle animation
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        const numParticles = 100;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor(x, y, size, speedX, speedY, color) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.speedX = speedX;
+                this.speedY = speedY;
+                this.color = color;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.size > 0.2) this.size -= 0.02;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < numParticles; i++) {
+                const size = Math.random() * 2 + 1;
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const speedX = (Math.random() * 2 - 1) * 0.5;
+                const speedY = (Math.random() * 2 - 1) * 0.5;
+                const color = 'rgba(56, 189, 248, 0.7)'; // sky-400 with opacity
+                particles.push(new Particle(x, y, size, speedX, speedY, color));
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                if (particles[i].size <= 0.2) {
+                    particles.splice(i, 1);
+                    i--;
+                    const size = Math.random() * 2 + 1;
+                    const x = Math.random() * canvas.width;
+                    const y = canvas.height;
+                    const speedX = (Math.random() * 2 - 1) * 0.5;
+                    const speedY = (Math.random() * -3 - 1) * 0.5;
+                    const color = 'rgba(56, 189, 248, 0.7)';
+                    particles.push(new Particle(x, y, size, speedX, speedY, color));
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // JavaScript for scroll-triggered animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
